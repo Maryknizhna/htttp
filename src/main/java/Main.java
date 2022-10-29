@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
-    public static final String REQUEST_URI = "https://raw.githubusercontent.com/netology-code/jd-homeworks/master/http/task1/cats";
+    public static final String LIST_URI = "https://raw.githubusercontent.com/netology-code/jd-homeworks/master/http/task1/cats";
 
     public static final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -24,7 +24,7 @@ public class Main {
                         .build())
                 .build();
 
-        HttpGet request = new HttpGet(REQUEST_URI);
+        HttpGet request = new HttpGet(LIST_URI);
         CloseableHttpResponse response = httpClient.execute(request);
 
         List<CatFacts> cats = objectMapper.readValue(response.getEntity().getContent(), new TypeReference<>() {
