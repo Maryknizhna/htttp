@@ -8,7 +8,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Main {
     public static final String LIST_URI = "https://raw.githubusercontent.com/netology-code/jd-homeworks/master/http/task1/cats";
@@ -27,7 +26,7 @@ public class Main {
         HttpGet request = new HttpGet(LIST_URI);
         CloseableHttpResponse response = httpClient.execute(request);
 
-        List<CatFacts> cats = objectMapper.readValue(response.getEntity().getContent(), new TypeReference<>() {
+        List<CatFact> cats = objectMapper.readValue(response.getEntity().getContent(), new TypeReference<>() {
         });
         cats.stream()
                 .filter(c -> c.getUpvotes() != null && Integer.parseInt(c.getUpvotes()) > 2)
